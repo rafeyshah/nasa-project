@@ -8,6 +8,7 @@
     "test-watch": "jest --watch",
     "watch": "nodemon src/server.js",
     "start": "node src/server.js",
+    "cluster": "pm2 start src/server.js -i max",
     "custom": "set PORT=5000&& node src/server.js"
   },
   "keywords": [],
