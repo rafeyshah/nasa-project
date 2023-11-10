@@ -1,9 +1,6 @@
 const http = require("http");
 const express = require("express");
 
-// Improving Performance
-// const require
-
 const cors = require("cors");
 const morgan = require("morgan");
 
