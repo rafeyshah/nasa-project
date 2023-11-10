@@ -33,7 +33,7 @@ describe("Test POST /launch", () => {
       .expect(201);
 
     const requestDate = new Date(completeLaunchData.launchDate).valueOf();
-    const responseDate = new Date(request.body.launchDate).valueOf;
+    const responseDate = new Date(response.body.launchDate).valueOf();
     expect(responseDate).toBe(requestDate);
 
     expect(response.body).toMatchObject(launchDataWithoutDate);
