@@ -16,8 +16,10 @@ app.use(
   })
 );
 app.use(morgan("combined"));
-
 app.use(express.json());
+
+exports.app = app;
+
 app.use("/planets", planetsRouter);
 app.use("/launches", launchesRouter);
 

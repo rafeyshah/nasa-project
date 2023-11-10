@@ -39,7 +39,7 @@ const loadPlanetsData = () => {
         //     return planet["kepler_name"];
         //   })
         // );
-        console.log(`${habitablePlanets.length} habitable planets found!`);
+        // console.log(`${habitablePlanets.length} habitable planets found!`);
         resolve();
       });
   });
