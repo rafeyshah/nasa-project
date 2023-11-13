@@ -29,9 +29,7 @@ const loadPlanetsData = () => {
       .on("data", async (data) => {
         if (isHabitablePlanet(data)) {
           // TODO: Replace below create with insert + update = upsert
-          // await planets.create({
-          //   keplerName: data.kepler_name,
-          // });
+          savePlanet(data);
         }
       })
       .on("error", (err) => {
@@ -52,6 +50,24 @@ const loadPlanetsData = () => {
 
 const getAllPlanets = async () => {
   return await planets.find({});
+};
+
+const savePlanet = async (planet) => {
+  try {
+    await planets.updateOne(
+      {
+        keplerName: data.kepler_name,
+      },
+      {
+        keplerName: data.kepler_name,
+      },
+      {
+        upsert: true,
+      }
+    );
+  } catch (err) {
+    console.err(`Could not save ${err}`);
+  }
 };
 
 module.exports = {
