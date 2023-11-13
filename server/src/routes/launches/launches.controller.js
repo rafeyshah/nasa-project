@@ -23,16 +23,20 @@ const httpAddNewLaunch = (req, res) => {
       error: "Missing required launch property",
     });
   }
-  launch.launchDate = new Date(launch.launchDate);
-  if (isNaN(launch.launchDate.valueOf())) {
-    return res.status(400).json({
-      error: "Invalid launch date",
-    });
-  }
+  try {
+    launch.launchDate = new Date(launch.launchDate);
+    if (isNaN(launch.launchDate.valueOf())) {
+      return res.status(400).json({
+        error: "Invalid launch date",
+      });
+    }
 
-  // addNewLaunch(launch);
-  scheduleNewLaunch(launch);
-  return res.status(201).json(launch);
+    // addNewLaunch(launch);
+    scheduleNewLaunch(launch);
+    return res.status(201).json(launch);
+  } catch (err) {
+    res.status(400).json({ err: "No matching planet found!" });
+  }
 };
 
 const httpAbortLaunch = async (req, res) => {
