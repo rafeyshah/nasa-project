@@ -1,5 +1,7 @@
 # NASA Project
 
+![Logo](https://github.com/rafeyshah/nasa-project/blob/master/banner.PNG)
+
 ## Overview
 
 This project was developed as a part of learning Node.js and Express.js, with a focus on various functionalities. The project involves implementing CRUD operations on a MongoDB database using Mongoose, parsing CSV files with the `csv-parse` library, writing test cases using Supertest and Jest, and exploring concepts related to performance improvement through Cluster's Load Balancing using the Process Manager 2 library and Worker Threads using `worker_threads`. The frontend of the project is adapted from the NASA Launch Mission React Template.
