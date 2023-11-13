@@ -49,7 +49,14 @@ const loadPlanetsData = () => {
 };
 
 const getAllPlanets = async () => {
-  return await planets.find({});
+  return await planets.find(
+    {}
+    // Excluding fields from the response
+    // {
+    //   __v: 0,
+    //   _id: 0,
+    // }
+  );
 };
 
 const savePlanet = async (data) => {
