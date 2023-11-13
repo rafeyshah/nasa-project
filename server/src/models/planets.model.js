@@ -52,7 +52,7 @@ const getAllPlanets = async () => {
   return await planets.find({});
 };
 
-const savePlanet = async (planet) => {
+const savePlanet = async (data) => {
   try {
     await planets.updateOne(
       {
@@ -66,7 +66,7 @@ const savePlanet = async (planet) => {
       }
     );
   } catch (err) {
-    console.err(`Could not save ${err}`);
+    console.error(`Could not save ${err}`);
   }
 };
 
