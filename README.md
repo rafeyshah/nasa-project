@@ -32,3 +32,9 @@ Integrated the frontend of the project using the NASA Launch Mission React Templ
    ```bash
    git clone https://github.com/rafeyshah/nasa-project.git
    cd nasa-project
+2. Install dependencies:
+   ```bash
+   npm install
+3. Start the application
+   ```bash
+   npm start
