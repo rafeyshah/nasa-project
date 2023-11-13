@@ -4,6 +4,18 @@ const launches = new Map();
 
 let latestFlightNumber = 100;
 
+const saveLaunch = async (launch) => {
+  await launchesDatabase.updateOne(
+    {
+      flightNumber: launch.flightNumber,
+    },
+    launch,
+    {
+      upsert: true,
+    }
+  );
+};
+
 const launch = {
   flightNumber: 100,
   mission: "Kepler Exploration X",
@@ -30,20 +42,15 @@ const abortLaunchById = (launchId) => {
   return aborted;
 };
 
-const getAllLaunches = () => {
+const getAllLaunches = async () => {
   // console.log(Array.from(launches.values()));
-  return Array.from(launches.values());
-};
-
-const saveLaunch = async (launch) => {
-  await launchesDatabase.updateOne(
-    {
-      flightNumber: launch.flightNumber,
-    },
-    launch,
-    {
-      upsert: true,
-    }
+  return await launchesDatabase.find(
+    {}
+    // Excluding Field from Response
+    // {
+    //   _id: 0,
+    //   __v: 0,
+    // }
   );
 };
 
