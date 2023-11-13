@@ -1,10 +1,20 @@
 const launchesDatabase = require("./launches.mongo");
+const planetsDatabase = require("./planets.mongo");
 
 const launches = new Map();
 
 let latestFlightNumber = 100;
 
 const saveLaunch = async (launch) => {
+  // Referential Integrity -- Node Way
+  const planet = await planetsDatabase.findOne({
+    keplerName: launch.target,
+  });
+
+  if (!planet) {
+    throw new Error("No matching planet found!");
+  }
+
   await launchesDatabase.updateOne(
     {
       flightNumber: launch.flightNumber,
