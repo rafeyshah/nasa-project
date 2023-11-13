@@ -1,9 +1,9 @@
 const launchesDatabase = require("./launches.mongo");
 const planetsDatabase = require("./planets.mongo");
 
-const launches = new Map();
+const DEFAULT_FLIGHT_NUMBER = 100;
 
-let latestFlightNumber = 100;
+const launches = new Map();
 
 const saveLaunch = async (launch) => {
   // Referential Integrity -- Node Way
@@ -24,6 +24,16 @@ const saveLaunch = async (launch) => {
       upsert: true,
     }
   );
+};
+
+const getLatestFlightNumber = async () => {
+  // Minus (-) used in sort for descending order
+  const latestLaunch = await launchesDatabase.findOne().sort("-flightNumber");
+  if (!latestLaunch) {
+    return DEFAULT_FLIGHT_NUMBER;
+  }
+
+  return latestLaunch.flightNumber;
 };
 
 const launch = {
