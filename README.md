@@ -1,6 +1,6 @@
 # NASA Project
 
-![Logo](https://github.com/rafeyshah/nasa-project/blob/master/banner.PNG)
+![Logo](https://github.com/rafeyshah/nasa-project/blob/main/banner.PNG)
 
 ## Overview
 
