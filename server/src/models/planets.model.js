@@ -50,8 +50,8 @@ const loadPlanetsData = () => {
   });
 };
 
-const getAllPlanets = () => {
-  return habitablePlanets;
+const getAllPlanets = async () => {
+  return await planets.find({});
 };
 
 module.exports = {
