@@ -51,15 +51,26 @@ saveLaunch(launch);
 // launches.set(launch.flightNumber, launch);
 // launches.set(launch);
 
-const existsLaunchWithId = (launchId) => {
-  return launches.has(launchId);
+const existsLaunchWithId = async (launchId) => {
+  return await launchesDatabase.findOne({
+    flightNumber: launchId,
+  });
 };
 
-const abortLaunchById = (launchId) => {
-  const aborted = launches.get(launchId);
-  aborted.upcoming = false;
-  aborted.success = false;
-  return aborted;
+const abortLaunchById = async (launchId) => {
+  const aborted = await launchesDatabase.updateOne(
+    {
+      flightNumber: launchId,
+    },
+    {
+      upcoming: false,
+      success: false,
+    }
+  );
+  // const aborted = launches.get(launchId);
+  // aborted.upcoming = false;
+  // aborted.success = false;
+  // return aborted;
 };
 
 const getAllLaunches = async () => {
