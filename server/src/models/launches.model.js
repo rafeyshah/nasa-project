@@ -3,7 +3,7 @@ const planetsDatabase = require("./planets.mongo");
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
-const launches = new Map();
+// const launches = new Map();
 
 const saveLaunch = async (launch) => {
   // Referential Integrity -- Node Way
@@ -48,7 +48,7 @@ const launch = {
 };
 
 saveLaunch(launch);
-launches.set(launch.flightNumber, launch);
+// launches.set(launch.flightNumber, launch);
 // launches.set(launch);
 
 const existsLaunchWithId = (launchId) => {
@@ -75,7 +75,7 @@ const getAllLaunches = async () => {
 };
 
 const scheduleNewLaunch = async (launch) => {
-  const newFlightNumber = await (getLatestFlightNumber() + 1);
+  const newFlightNumber = (await getLatestFlightNumber()) + 1;
   const newLaunch = Object.assign(launch, {
     success: true,
     upcoming: true,
