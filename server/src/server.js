@@ -45,6 +45,7 @@ const startServer = async () => {
     // useUnifiedTopology: true,
   });
   await loadPlanetsData();
+  await loadLaunchesData();
   server.listen(PORT, () => {
     console.log(`Listening port on ${PORT}...`);
   });
