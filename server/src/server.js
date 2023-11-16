@@ -8,6 +8,7 @@ const morgan = require("morgan");
 const apiRouter = require("./routes/api");
 
 const { loadPlanetsData } = require("./models/planets.model");
+const { loadLaunchesData } = require("./models/launches.model");
 
 const MONGO_URL = "mongodb://localhost:27017/nasa-project";
 const app = express();
