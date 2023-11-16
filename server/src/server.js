@@ -8,13 +8,14 @@ const morgan = require("morgan");
 const apiRouter = require("./routes/api");
 
 const { loadPlanetsData } = require("./models/planets.model");
+const { loadLaunchesData } = require("./models/launches.model");
 
 const MONGO_URL = "mongodb://localhost:27017/nasa-project";
 const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:4000",
   })
 );
 app.use(morgan("combined"));
@@ -44,6 +45,7 @@ const startServer = async () => {
     // useUnifiedTopology: true,
   });
   await loadPlanetsData();
+  await loadLaunchesData();
   server.listen(PORT, () => {
     console.log(`Listening port on ${PORT}...`);
   });

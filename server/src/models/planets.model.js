@@ -30,6 +30,7 @@ const loadPlanetsData = () => {
         if (isHabitablePlanet(data)) {
           // TODO: Replace below create with insert + update = upsert
           savePlanet(data);
+          habitablePlanets.push(data);
         }
       })
       .on("error", (err) => {
@@ -42,7 +43,7 @@ const loadPlanetsData = () => {
         //     return planet["kepler_name"];
         //   })
         // );
-        // console.log(`${habitablePlanets.length} habitable planets found!`);
+        console.log(`${habitablePlanets.length} habitable planets found!`);
         resolve();
       });
   });
