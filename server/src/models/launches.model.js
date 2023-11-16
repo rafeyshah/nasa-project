@@ -8,15 +8,6 @@ const DEFAULT_FLIGHT_NUMBER = 100;
 // const launches = new Map();
 
 const saveLaunch = async (launch) => {
-  // Referential Integrity -- Node Way
-  const planet = await planetsDatabase.findOne({
-    keplerName: launch.target,
-  });
-
-  // if (!planet) {
-  //   throw new Error("No matching planet found!");
-  // }
-
   await launchesDatabase.updateOne(
     {
       flightNumber: launch.flightNumber,
@@ -78,6 +69,10 @@ const populateLaunches = async () => {
     },
   });
 
+  if (response.status !== 200) {
+    console.log("Problem downloading launch data");
+    throw new Error("Launch data download failed");
+  }
   const launchDocs = response.data.docs;
 
   for (const launchDoc of launchDocs) {
@@ -97,6 +92,7 @@ const populateLaunches = async () => {
     console.log(`${launch.flightNumber} ${launch.mission}`);
 
     // Populate launches collection...
+    await saveLaunch(launch);
   }
 };
 
