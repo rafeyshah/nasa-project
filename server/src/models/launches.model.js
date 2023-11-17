@@ -135,16 +135,19 @@ const abortLaunchById = async (launchId) => {
   // return aborted;
 };
 
-const getAllLaunches = async () => {
+const getAllLaunches = async (skip, limit) => {
   // console.log(Array.from(launches.values()));
-  return await launchesDatabase.find(
-    {}
-    // Excluding Field from Response
-    // {
-    //   _id: 0,
-    //   __v: 0,
-    // }
-  );
+  return await launchesDatabase
+    .find(
+      {}
+      // Excluding Field from Response
+      // {
+      //   _id: 0,
+      //   __v: 0,
+      // }
+    )
+    .skip(skip)
+    .limit(limit);
 };
 
 const scheduleNewLaunch = async (launch) => {
