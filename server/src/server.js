@@ -2,6 +2,8 @@ const http = require("http");
 const mongoose = require("mongoose");
 const express = require("express");
 
+require("dotenv").config();
+
 const cors = require("cors");
 const morgan = require("morgan");
 
@@ -10,7 +12,7 @@ const apiRouter = require("./routes/api");
 const { loadPlanetsData } = require("./models/planets.model");
 const { loadLaunchesData } = require("./models/launches.model");
 
-const MONGO_URL = "mongodb://localhost:27017/nasa-project";
+const MONGO_URL = process.env.MONGO_URL;
 const app = express();
 
 app.use(
