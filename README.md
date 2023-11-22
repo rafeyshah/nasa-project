@@ -32,6 +32,9 @@ Integrated the frontend of the project using the NASA Launch Mission React Templ
 
 Versioned APIs, Different versions are used to understand version system of APIs `localhost:8000/v1/...`
 
+### 7. Paginating APIs
+
+APIs are paginated to fetch the results.
 
 ## Installation
 
