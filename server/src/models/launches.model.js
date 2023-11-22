@@ -138,14 +138,8 @@ const abortLaunchById = async (launchId) => {
 const getAllLaunches = async (skip, limit) => {
   // console.log(Array.from(launches.values()));
   return await launchesDatabase
-    .find(
-      {}
-      // Excluding Field from Response
-      // {
-      //   _id: 0,
-      //   __v: 0,
-      // }
-    )
+    .find({})
+    .sort({ flightNumber: 1 })
     .skip(skip)
     .limit(limit);
 };
